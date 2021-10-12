@@ -1,0 +1,21 @@
+name: Build and deploy Node.js app to Azure Web App - WebAppExpress
+
+on:
+  push:
+    branches:
+      - dev-01
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Node.js version
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'      
