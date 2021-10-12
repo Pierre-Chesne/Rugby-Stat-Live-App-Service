@@ -1,0 +1,23 @@
+{
+  "name": "rugby-stat-live-app-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pierre-Chesne/Rugby-Stat-Live-App-Service.git"
+  },
+  "author": "pierrc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pierre-Chesne/Rugby-Stat-Live-App-Service/issues"
+  },
+  "homepage": "https://github.com/Pierre-Chesne/Rugby-Stat-Live-App-Service#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
+}
