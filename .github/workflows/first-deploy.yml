@@ -6,7 +6,7 @@ env:
   # Image ACR  
   ACR_NAME: "pierrcacr"
   IMAGE_NAME: "front-stats-rugby-app-service"
-  IMAGE_VERSION: "0.0.4"
+  IMAGE_VERSION: "0.0.5"
 
   # Web App
   LOCATION: "francecentral"
@@ -70,5 +70,5 @@ jobs:
       run: |
         az deployment sub create \
           --location ${{ env.LOCATION}} \
-          --template-file ./Bicep/mainWebApp.bicep \
+          --template-file ./Bicep/main.bicep \
             --parameters 'RgSiteName=${{ env.RG_NAME }}' 'appPlanName=${{ env.APPPLANNAME }}' 'sku=${{ env.SKUNAME }}' 'rugbystatsapiName=${{ env.RUGBYSTATSAPINAME }}' 'DockerRegistryName=${{ env.DOCKERREGISTRYNAME }}' 'DockerRegistryUser=${{ env.DOCKERREGISTRYUSER }}' 'DockerRegistryPWD=${{ secrets.ACR_KEY }}' 'ImageName=${{ env.IMAGE_NAME }}' 'ImageVersion=${{ env.IMAGE_VERSION }}' 'UserDB=${{ secrets.VALUE_USER }}' 'HostDB=${{ secrets.VALUE_HOST }}' 'PwDB=${{ secrets.VALUE_PWD }}' 'NameDB=${{ secrets.VALUE_DB }}'
