@@ -1,0 +1,41 @@
+name: Deploy first
+on:
+  workflow_dispatch
+
+env:
+  # Image ACR  
+  ACR_NAME: "pierrcacr"
+  IMAGE_NAME: "front-stats-rugby-app-service"
+  IMAGE_VERSION: "0.0.1"
+
+jobs:
+  Build-Image:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: "Checkout the code"
+      uses: actions/checkout@v2
+
+    - name: Connexion à Azure Container Registry
+      uses: docker/login-action@v1.10.0
+      with:
+        registry: ${{ env.ACR_NAME }}.azurecr.io
+        username: ${{ env.ACR_NAME }}
+        password: "${{ secrets.ACR_KEY }}"
+
+    - name: Extraire les métadonnées docker
+      id: meta
+      uses: docker/metadata-action@v3.5.0
+      with:
+        images: ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }} 
+        tags: |
+         type=semver,pattern={{version}},value=${{ env.IMAGE_VERSION }}
+
+    - name: Construire et pousser image Docker
+      uses: docker/build-push-action@v2.7.0
+      with:         
+          context: ./
+          file: ./Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
