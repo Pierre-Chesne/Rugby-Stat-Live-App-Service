@@ -9,7 +9,7 @@ env:
   IMAGE_VERSION: "0.0.3"
 
   # Web App
-  LOCATION: "france central"
+  LOCATION: "francecentral"
   RG_NAME: "RG-Stats-Rugby-App-Service"
   APP_PLAN_NAME: "app-plan-Stats-Rugby-App-Service"
   APP_PLAN_SKU: "P1v2"
