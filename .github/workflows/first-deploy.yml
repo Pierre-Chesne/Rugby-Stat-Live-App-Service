@@ -6,7 +6,7 @@ env:
   # Image ACR  
   ACR_NAME: "pierrcacr"
   IMAGE_NAME: "front-stats-rugby-app-service"
-  IMAGE_VERSION: "0.0.5"
+  IMAGE_VERSION: "0.0.6"
 
   # Web App
   LOCATION: "francecentral"
