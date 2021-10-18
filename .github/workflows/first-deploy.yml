@@ -1,4 +1,4 @@
-name: Test - Build and deploy in WebApp
+name: Deploy first
 on:
   workflow_dispatch
 
