@@ -71,4 +71,4 @@ jobs:
         az deployment sub create \
           --location ${{ env.LOCATION}} \
           --template-file ./Bicep/main.bicep \
-          --parameters 'RgSiteName=${{ env.RG_NAME }}' 'appPlanName=${{ env.APP_PLAN_NAME }}' 'sku=${{ env.APP_PLAN_SKU }}' 'rugbystatsapiName=${{ env.SITE_NAME }}' 'DockerRegistryName=${{ env.ACR_REGISTRY_NAME }}' 'DockerRegistryUser=${{ env.ACR_REGISTRY_USER }}' 'PwDB=${{ secrets.VALUE_PWD }}' 'NameDB=${{ secrets.VALUE_DB }}'
+          --parameters 'RgSiteName=${{ env.RG_NAME }}' 'appPlanName=${{ env.APP_PLAN_NAME }}' 'sku=${{ env.APP_PLAN_SKU }}' 'rugbystatsapiName=${{ env.SITE_NAME }}' 'DockerRegistryName=${{ env.ACR_REGISTRY_NAME }}' 'DockerRegistryUser=${{ env.ACR_REGISTRY_USER }}' 'DockerRegistryPWD=${{ secrets.ACR_KEY }}' 'ImageName=${{ env.ACR_REGISTRY_IMAGE_NAME }}' 'ImageVersion=${{ env.ACR_IMAGE_VERSION }}' 'UserDB=${{ secrets.VALUE_USER }}' 'HostDB=${{ secrets.VALUE_HOST }}' 'PwDB=${{ secrets.VALUE_PWD }}' 'NameDB=${{ secrets.VALUE_DB }}'
