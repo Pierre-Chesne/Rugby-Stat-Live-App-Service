@@ -20,3 +20,22 @@ env:
   ACR_IMAGE_VERSION: "latest"
   WEBHOOK: "haikus"
 
+jobs:
+
+  Build_Image:
+    runs-on: ubuntu-20.04
+
+      - name: Login Azure
+        uses: Azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Replace
+        uses: jacobtomlinson/gha-find-replace@master
+        with:
+          find: "localhost:5500"
+          replace: "${{ SITE_NAME }}.azurewebsites.net"
+          
+      - name: Test replace
+        run: |
+          cat ./public/plaquage.htlm
