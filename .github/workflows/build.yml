@@ -27,6 +27,9 @@ jobs:
 
     steps:
 
+      - name: Recuperation du repos 
+        uses: actions/checkout@v2  
+
       - name: Login Azure
         uses: Azure/login@v1
         with:
@@ -40,4 +43,4 @@ jobs:
           
       - name: Test replace
         run: |
-          ls
+          cat ./public/plaquage.html
