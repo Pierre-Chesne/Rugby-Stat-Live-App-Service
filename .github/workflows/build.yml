@@ -36,7 +36,7 @@ jobs:
         uses: jacobtomlinson/gha-find-replace@master
         with:
           find: "localhost:5500"
-          replace: "${{ SITE_NAME }}.azurewebsites.net"
+          replace: "${{ env.SITE_NAME }}.azurewebsites.net"
           
       - name: Test replace
         run: |
