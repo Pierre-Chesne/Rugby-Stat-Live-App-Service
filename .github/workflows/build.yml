@@ -25,6 +25,8 @@ jobs:
   Build_Image:
     runs-on: ubuntu-20.04
 
+    steps:
+
       - name: Login Azure
         uses: Azure/login@v1
         with:
