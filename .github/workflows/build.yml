@@ -3,20 +3,20 @@ on:
   workflow_dispatch
 
 env:
-  # Image ACR  
+  # Image & ACR  
   ACR_NAME: "pierrcacr"
-  IMAGE_NAME: "front-stats-rugby-app-service"
-  IMAGE_VERSION: "0.0.6"
+  IMAGE_NAME: "stats-rugby-app-service"
+  IMAGE_VERSION: "0.0.1"
 
   # Web App
   LOCATION: "westeurope"
   RG_NAME: "RG-Stats-Rugby-App-Service"
   APP_PLAN_NAME: "app-plan-Stats-Rugby-App-Service"
   APP_PLAN_SKU: "P1v2"
-  SITE_NAME: "api-stats-rugby"  
+  SITE_NAME: "stats-rugby-as"  
   ACR_REGISTRY_NAME: "pierrcacr.azurecr.io"
   ACR_REGISTRY_USER: "pierrcacr"  
-  ACR_REGISTRY_IMAGE_NAME: "pierrcacr.azurecr.io/front-stats-rugby-app-service"
+  ACR_REGISTRY_IMAGE_NAME: "pierrcacr.azurecr.io/stats-rugby-app-service"
   ACR_IMAGE_VERSION: "latest"
   WEBHOOK: "haikus"
 
@@ -40,7 +40,28 @@ jobs:
         with:
           find: "localhost:5500"
           replace: "${{ env.SITE_NAME }}.azurewebsites.net"
-          
-      - name: Test replace
-        run: |
-          cat ./public/plaquage.html
+
+    - name: Connexion à Azure Container Registry
+      uses: docker/login-action@v1.10.0
+      with:
+        registry: ${{ env.ACR_NAME }}.azurecr.io
+        username: ${{ env.ACR_NAME }}
+        password: "${{ secrets.ACR_KEY }}"
+
+    - name: Extraire les métadonnées docker
+      id: meta
+      uses: docker/metadata-action@v3.5.0
+      with:
+        images: ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }} 
+        tags: |
+         type=semver,pattern={{version}},value=${{ env.IMAGE_VERSION }}
+
+    - name: Construire et pousser image Docker
+      uses: docker/build-push-action@v2.7.0
+      with:         
+          context: ./
+          file: ./Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
