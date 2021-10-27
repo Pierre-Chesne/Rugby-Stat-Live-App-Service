@@ -1,0 +1,22 @@
+name: Build
+on:
+  workflow_dispatch
+
+env:
+  # Image ACR  
+  ACR_NAME: "pierrcacr"
+  IMAGE_NAME: "front-stats-rugby-app-service"
+  IMAGE_VERSION: "0.0.6"
+
+  # Web App
+  LOCATION: "westeurope"
+  RG_NAME: "RG-Stats-Rugby-App-Service"
+  APP_PLAN_NAME: "app-plan-Stats-Rugby-App-Service"
+  APP_PLAN_SKU: "P1v2"
+  SITE_NAME: "api-stats-rugby"  
+  ACR_REGISTRY_NAME: "pierrcacr.azurecr.io"
+  ACR_REGISTRY_USER: "pierrcacr"  
+  ACR_REGISTRY_IMAGE_NAME: "pierrcacr.azurecr.io/front-stats-rugby-app-service"
+  ACR_IMAGE_VERSION: "latest"
+  WEBHOOK: "haikus"
+
