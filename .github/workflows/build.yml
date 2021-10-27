@@ -40,4 +40,4 @@ jobs:
           
       - name: Test replace
         run: |
-          cat ./public/plaquage.html
+          ls
