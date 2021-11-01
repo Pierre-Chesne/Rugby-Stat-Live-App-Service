@@ -7,27 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>Stats-Rugby-Plaquages</title>
+    <title>Stats-Rugby-Mêlées</title>
 </head>
 
 <body>
     <!-- Chargement de la librairie jQuery  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <!--plaquage ok -->
+    <!--Mêlées ok -->
     <form>
         <input type="hidden" name="Id" value="1" max="1" min="1">
 
-        <button class="btn btn-success btn-lg" id="btnaddok" type="submit">Plaquage réussi +1</button>
+        <button class="btn btn-success btn-lg" id="btnaddok" type="submit">Mêlée gagnée +1</button>
 
     </form>
     <div style="position: absolute; top: 0px; left: 250px; font-weight: bold; color: green; font-size: xx-large;  "
         id="appok">
         <script>
-            fetch('http://localhost:5500/plaquage-ok/get/')
+            fetch('http://localhost:5500/melee-ok/get/')
                 .then(res => res.json())
                 .then(data => {
-                    document.querySelector('#appok').innerText = data.results[0].sum_plaquage_ok
+                    document.querySelector('#appok').innerText = data.results[0].sum_melee_ok
 
                 })
         </script>
@@ -35,7 +34,7 @@
     <script>
         jQuery(function ($) {
             $('#btnaddok').click(() => {
-                let url = 'http://localhost:5500/plaquage-ok/add';
+                let url = 'http://localhost:5500/melee-ok/add';
 
                 jQuery.ajax({
                     type: "POST",
@@ -49,17 +48,16 @@
         });
     </script>
 
-    </br>
-
-    <!--plaquage ko -->
+    </div><br />
+    <!--Mêlées ko -->
     <form>
         <input type="hidden" name="Id" value="1" max="1" min="1">
-        <button class="btn btn-danger btn-lg" id="btnaddko" type="submit">Plaquage loupé +1</button>
+        <button class="btn btn-danger btn-lg" id="btnaddko" type="submit">Mêlée perdue +1</button>
     </form>
     <script>
         jQuery(function ($) {
             $('#btnaddko').click(() => {
-                let url = 'http://localhost:5500/plaquage-ko/add';
+                let url = 'http://localhost:5500/melee-ko/add';
 
                 jQuery.ajax({
                     type: "POST",
@@ -75,20 +73,20 @@
     <div style="position: absolute; top: 70px; left: 250px; font-weight: bold; color: red; font-size: xx-large;"
         id="appko">
         <script>
-            fetch('http://localhost:5500/plaquage-ko/get/')
+            fetch('http://localhost:5500/melee-ko/get/')
                 .then(res => res.json())
                 .then(data => {
-                    document.querySelector('#appko').innerText = data.results[0].sum_plaquage_ko
+                    document.querySelector('#appko').innerText = data.results[0].sum_melee_ko
 
                 })
         </script>
     </div></br>
 
     <!-- Stats -->
-    <button onclick=window.location.href='./plaquages-stats.html' class="btn btn-secondary btn-lg">Stats
-        Plaquages</button></br></br>
+    <button onclick=window.location.href='./melees-stats.html' class="btn btn-secondary btn-lg">Stats
+        Mêlées</button></br></br>
 
-    <!--plaquage reset -->
+    <!--Mêlées reset -->
     <form>
         <button id="btnraz" type="submit" class="btn btn-warning btn-lg">Reset</button>
     </form></br>
@@ -97,7 +95,7 @@
 
             $('#btnraz').click(() => {
                 console.log('click btnraz');
-                let url = 'http://localhost:5500/plaquage-ok/reset';
+                let url = 'http://localhost:5500/melee-ok/reset';
 
                 jQuery.ajax({
                     type: "POST",
@@ -111,7 +109,7 @@
 
             $('#btnraz').click(() => {
                 console.log('click btnraz');
-                let url = 'http://localhost:5500/plaquage-ko/reset';
+                let url = 'http://localhost:5500/melee-ko/reset';
 
                 jQuery.ajax({
                     type: "POST",
@@ -129,6 +127,6 @@
     <!-- Home -->
     <button onclick=window.location.href='./index.html' class="btn btn-link btn-lg">Home</button>
 
-</body>
 
-</html>
+
+</body>

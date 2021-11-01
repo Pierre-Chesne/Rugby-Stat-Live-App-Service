@@ -18,7 +18,7 @@ env:
   ACR_REGISTRY_USER: "pierrcacr"  
   ACR_REGISTRY_IMAGE_NAME: "pierrcacr.azurecr.io/stats-rugby-app-service"
   ACR_IMAGE_VERSION: "latest"
-  WEBHOOK: "haikus"
+  WEBHOOK: "rugbystatwebapp"
 
 jobs:
 
@@ -84,3 +84,19 @@ jobs:
           --location ${{ env.LOCATION}} \
           --template-file ./Bicep/main.bicep \
           --parameters 'RgSiteName=${{ env.RG_NAME }}' 'appPlanName=${{ env.APP_PLAN_NAME }}' 'sku=${{ env.APP_PLAN_SKU }}' 'rugbystatsapiName=${{ env.SITE_NAME }}' 'DockerRegistryName=${{ env.ACR_REGISTRY_NAME }}' 'DockerRegistryUser=${{ env.ACR_REGISTRY_USER }}' 'DockerRegistryPWD=${{ secrets.ACR_KEY }}' 'ImageName=${{ env.ACR_REGISTRY_IMAGE_NAME }}' 'ImageVersion=${{ env.ACR_IMAGE_VERSION }}' 'UserDB=${{ secrets.VALUE_USER }}' 'HostDB=${{ secrets.VALUE_HOST }}' 'PwDB=${{ secrets.VALUE_PWD }}' 'NameDB=${{ secrets.VALUE_DB }}'
+
+    - name: Activation Webhook WebApp
+      run: |
+        ci_cd_webhook=`az webapp deployment container config \
+          --name ${{ env.SITE_NAME}} \
+          --resource-group ${{ env.RG_NAME}} \
+          --enable-cd true \
+          --query CI_CD_URL \
+          --output tsv`
+        az acr webhook create \
+          --resource-group ${{ env.RG_NAME_ACR}} \
+          --location ${{ env.LOCATION}} \
+          --name ${{ env.WEBHOOK }} \
+          --registry ${{ env.ACR_NAME}} \
+          --uri $ci_cd_webhook \
+          --actions push --output none
