@@ -85,3 +85,18 @@ jobs:
           --template-file ./Bicep/main.bicep \
           --parameters 'RgSiteName=${{ env.RG_NAME }}' 'appPlanName=${{ env.APP_PLAN_NAME }}' 'sku=${{ env.APP_PLAN_SKU }}' 'rugbystatsapiName=${{ env.SITE_NAME }}' 'DockerRegistryName=${{ env.ACR_REGISTRY_NAME }}' 'DockerRegistryUser=${{ env.ACR_REGISTRY_USER }}' 'DockerRegistryPWD=${{ secrets.ACR_KEY }}' 'ImageName=${{ env.ACR_REGISTRY_IMAGE_NAME }}' 'ImageVersion=${{ env.ACR_IMAGE_VERSION }}' 'DB_USER=${{ secrets.VALUE_USER }}' 'DB_HOST=${{ secrets.VALUE_HOST }}' 'DB_PASS=${{ secrets.VALUE_PWD }}' 'DB_MANE=${{ secrets.VALUE_DB }}'
 
+    - name: Activation Webhook WebApp
+      run: |
+        ci_cd_webhook=`az webapp deployment container config \
+          --name ${{ env.SITE_NAME}} \
+          --resource-group ${{ env.RG_NAME}} \
+          --enable-cd true \
+          --query CI_CD_URL \
+          --output tsv`
+        az acr webhook create \
+          --resource-group ${{ env.RG_NAME}} \
+          --location ${{ env.LOCATION}} \
+          --name ${{ env.WEBHOOK }} \
+          --registry ${{ env.ACR_NAME}} \
+          --uri $ci_cd_webhook \
+          --actions push --output none
