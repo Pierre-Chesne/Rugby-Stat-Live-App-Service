@@ -39,19 +39,19 @@ resource siteAppAPI 'Microsoft.Web/sites@2020-06-01' = {
           value: 'false'
         }
         {
-          name: 'HOST'
+          name: 'DB_HOST'
           value: DB_HOST
         }
         {
-          name: 'USER'
+          name: 'DB_USER'
           value: DB_USER
         }
         {
-          name: 'PASSWORD'
+          name: 'DB_PASS'
           value: DB_PASS
         }
         {
-          name: 'DB'
+          name: 'DB_MANE'
           value: DB_MANE
         }
       ]
