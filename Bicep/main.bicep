@@ -7,10 +7,6 @@ param rugbystatsapiName string
 param DockerRegistryName string
 param DockerRegistryUser string
 param DockerRegistryPWD string
-//param UserDB string
-//param HostDB string
-//param PwDB string
-//param NameDB string
 param DB_USER string
 param DB_HOST string
 param DB_PASS string

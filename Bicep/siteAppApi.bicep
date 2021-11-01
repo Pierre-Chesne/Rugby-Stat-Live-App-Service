@@ -3,13 +3,9 @@ param appPlanId string
 param DockerRegistryName string
 param DockerRegistryUser string
 param DockerRegistryPWD string
-//param UserDB string
 param DB_USER string
-//param HostDB string
 param DB_HOST string
-//param PwDB string
 param DB_PASS string
-//param NameDB string
 param DB_MANE string
 param ImageName string
 param ImageVersion string
@@ -55,7 +51,8 @@ resource siteAppAPI 'Microsoft.Web/sites@2020-06-01' = {
           value: DB_MANE
         }
       ]
-      linuxFxVersion:'DOCKER|${ImageName}:${ImageVersion}'             
+      linuxFxVersion:'DOCKER|${ImageName}:${ImageVersion}'
+      alwaysOn: true             
     }
     serverFarmId: appPlanId
   }  
