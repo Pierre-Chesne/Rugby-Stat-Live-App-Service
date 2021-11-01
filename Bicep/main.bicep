@@ -7,10 +7,14 @@ param rugbystatsapiName string
 param DockerRegistryName string
 param DockerRegistryUser string
 param DockerRegistryPWD string
-param UserDB string
-param HostDB string
-param PwDB string
-param NameDB string
+//param UserDB string
+//param HostDB string
+//param PwDB string
+//param NameDB string
+param DB_USER string
+param DB_HOST string
+param DB_PASS string
+param DB_MANE string
 param ImageName string
 param ImageVersion string
 
@@ -37,10 +41,10 @@ module siteAppApiDeploy 'siteAppApi.bicep' = {
     DockerRegistryName: DockerRegistryName
     DockerRegistryUser: DockerRegistryUser
     DockerRegistryPWD: DockerRegistryPWD
-    UserDB: UserDB
-    HostDB: HostDB
-    PwDB: PwDB
-    NameDB: NameDB
+    DB_USER: DB_USER
+    DB_HOST: DB_HOST
+    DB_PASS: DB_PASS
+    DB_MANE: DB_MANE
     ImageName: ImageName
     ImageVersion: ImageVersion      
     appPlanId: appPlanDeploy.outputs.appPlanId     
