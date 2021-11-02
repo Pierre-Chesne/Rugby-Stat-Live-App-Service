@@ -6,11 +6,11 @@ env:
   # Image & ACR  
   ACR_NAME: "pierrcacr"
   IMAGE_NAME: "stats-rugby-app-service"
-  IMAGE_VERSION: "0.0.1"
+  IMAGE_VERSION: "0.0.5"
   RG_ACR_Name: "RG-BE-ACR"
 
   # Web App
-  LOCATION: "westeurope"
+  LOCATION: "francecentral"
   RG_NAME: "RG-Stats-Rugby-App-Service"
   APP_PLAN_NAME: "app-plan-Stats-Rugby-App-Service"
   APP_PLAN_SKU: "P1v2"
