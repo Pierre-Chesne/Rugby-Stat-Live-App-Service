@@ -1,4 +1,4 @@
-name: First Build Deploy
+name: First Build Deploy Web App
 on:
   workflow_dispatch
 
