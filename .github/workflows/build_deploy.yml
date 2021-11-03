@@ -12,7 +12,7 @@ env:
   RG_ACR_Name: "RG-BE-ACR"
 
   # WebApp
-   SITE_NAME: "stats-rugby-as" 
+  SITE_NAME: "stats-rugby-as" 
 
 jobs:
 
