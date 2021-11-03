@@ -1,0 +1,38 @@
+name: Deploy MySQL
+on:
+  workflow_dispatch
+
+env:
+  RG_NAME_DB: "RG-DB"
+  LOCATION: "westeurope"
+  SERVER_NAME: "statrugby"
+  DB_USER: "pierrc"
+  DB_PASS: "Satanas@007"
+
+jobs:
+
+  Build_Image:
+    runs-on: ubuntu-20.04
+
+    steps:
+
+    - name: Recuperation du repos 
+      uses: actions/checkout@v2  
+
+    - name: Login Azure
+      uses: Azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Az CLI
+      run: |
+        az group create \
+          --name ${{ env.RG_NAME_DB }} \
+          --location ${{ env.LOCATION }}
+        az mysql server create \
+          --resource-group ${{ env.RG_NAME_DB }} \
+          --name ${{ env.SERVER_NAME }} \
+          --location ${{ env.LOCATION }} \
+          --admin-user ${{ env.DB_USER}} \
+          --admin-password ${{ env.DB_PASS}} \
+          --sku-name GP_Gen5_2               
