@@ -29,5 +29,5 @@ jobs:
         username: pierrc@statrugby
         password: Satanas@007
         # This is optional, you want to connect directly
-        database: REPLACE_WITH_DATABASE_NAME
+        # database: REPLACE_WITH_DATABASE_NAME
         sql-file: './MySQL/create_base.sql'        
