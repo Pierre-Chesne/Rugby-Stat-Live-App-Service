@@ -5,7 +5,7 @@
 </p>
 
 C'est tout simple ! Cette application permet d'avoir les stats en direct !<br/>
-Il suffit de donner l'URL de l'application à des parents de joueurs au abord du terrain (Ex: Un qui suit les plaquages, un autre qui suit les mêlées et un autre qui suit les touches. Encore mieux un qui suit tout :-)) ...<br/>
+Il suffit de donner l'URL de l'application à des parents de joueurs aux abords du terrain (Ex: Un qui suit les plaquages, un autre qui suit les mêlées et un autre qui suit les touches. Encore mieux un qui suit tout :-)) ...<br/>
 Les entraineurs et éducateurs ont toujours les informations en direct (mi-temps; quart-temps, ...)<br/>
 
 **Déploiement de l'application**<br/>
