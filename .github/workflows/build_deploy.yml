@@ -8,8 +8,11 @@ env:
   # Image & ACR  
   ACR_NAME: "pierrcacr"
   IMAGE_NAME: "stats-rugby-app-service"
-  IMAGE_VERSION: "0.1.5"
+  IMAGE_VERSION: "0.1.6"
   RG_ACR_Name: "RG-BE-ACR"
+
+  # WebApp
+   SITE_NAME: "stats-rugby-as" 
 
 jobs:
 
