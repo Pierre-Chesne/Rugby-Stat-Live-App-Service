@@ -1,3 +1,7 @@
+CREATE DATABASE rugby_api;
+
+USE rugby_api;
+
 create table plaquage_ok (
     Id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     sum_plaquage_ok int
