@@ -6,7 +6,7 @@ env:
   # Image & ACR  
   ACR_NAME: "pierrcacr"
   IMAGE_NAME: "stats-rugby-app-service"
-  IMAGE_VERSION: "0.0.8"
+  IMAGE_VERSION: "0.0.9"
   RG_ACR_Name: "RG-BE-ACR"
 
   # Web App
