@@ -1,4 +1,4 @@
-name: Deploy MySQL
+name: Create DB
 on:
   workflow_dispatch
 
