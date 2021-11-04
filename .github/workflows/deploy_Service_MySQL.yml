@@ -46,13 +46,7 @@ jobs:
         az mysql server update \
           --resource-group ${{ env.RG_NAME_DB }} \
           --name ${{ env.SERVER_NAME }} \
-          --ssl-enforcement Disabled        
+          --ssl-enforcement Disabled
+
+  
           
-    - uses: azure/mysql@v1
-      with:
-        server-name: statrugby.mysql.database.azure.com
-        username: pierrc@statrugby
-        password: Satanas@007
-        # This is optional, you want to connect directly
-        # database: REPLACE_WITH_DATABASE_NAME
-        sql-file: './MySQL/create_base.sql'        

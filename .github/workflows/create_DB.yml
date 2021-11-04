@@ -1,0 +1,27 @@
+name: Deploy MySQL
+on:
+  workflow_dispatch
+
+env:
+  RG_NAME_DB: "RG-DB"
+  LOCATION: "westeurope"
+  SERVER_NAME: "statrugby"
+
+jobs:
+
+  Build_Image:
+    runs-on: linux-latest
+
+    steps:
+
+    - name: Recuperation du repos 
+      uses: actions/checkout@v2  
+
+    - name: Login Azure
+      uses: Azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Create DB
+      run: |
+        mysql CREATE DATABASE rugby_api;
