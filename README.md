@@ -20,12 +20,4 @@ Deux exemples de Workflows pour le déploiement dans Azure:<br/>
   - Pousse l'image Docker dans une Azure Container Registry
   - Redéploie l'application dans la 'App Service' ('Container registry Webhook')
 
-Au préalable une base MySQL est installée en service 'Managed' dans Azure !
-
-
-
-
-
-
-
- 
+Au préalable une base MySQL est installée en service 'Managed' dans Azure ! 
